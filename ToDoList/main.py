@@ -1,4 +1,4 @@
-userPromptMain = "Type Add, Show, Edit or Exit: "
+userPromptMain = "Type Add, Show, Edit, Complete or Exit: "
 userPrompt = "Enter the Task: "
 tasks = []
 
@@ -8,23 +8,30 @@ while True:
 
     if command == "add":
         task = input(userPrompt)
-        tasks.append(task)
+        tasks.append(task)  
 
     elif command == "show":
-        for x in range(len(tasks)):
-            print(str(x+1) + ": " +tasks[x])
+        for index, t in enumerate(tasks):
+            print(f"{index+1}-{t}")
         
     elif command == "edit":
 
-        for x in range(len(tasks)):
-            print(str(x+1) + ": " +tasks[x])
+        for index, t in enumerate(tasks):
+            print(f"{index+1}-{t}")
 
         tno = int(input("Enter the Task number to edit: "))
         newTask= input("Enter the new task: ")
-        tasks[tno-1]= newTask.strip().title()    
+        tasks[tno-1]= newTask.strip().title()     
 
     elif command == "exit":
         break
+
+    elif command=="complete":
+        for index, t in enumerate(tasks):
+            print(f"{index+1}-{t}")
+
+        tno = int(input("Enter the Task number completed: "))
+        tasks.pop(tno-1)
 
     else:
         print("Invalid command. Please try again.")
