@@ -7,12 +7,17 @@ while True:
     command = input(userPromptMain).strip().lower()
 
     if command == "add":
-        task = input(userPrompt)
-        tasks.append(task)  
+        task = input(userPrompt)+"\n"
+         
+        file= open("ToDoList/tasks.txt", 'a+')
+        file.writelines(task)
+        file.close()
 
     elif command == "show":
+
+        tasks= open("ToDoList/tasks.txt", 'r').readlines()
         for index, t in enumerate(tasks):
-            print(f"{index+1}-{t}")
+            print(f"{index+1}-{t}", end='')
         
     elif command == "edit":
 
