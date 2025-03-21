@@ -9,15 +9,22 @@ while True:
     if command == "add":
         task = input(userPrompt)+"\n"
          
-        file= open("ToDoList/tasks.txt", 'a+')
-        file.writelines(task)
-        file.close()
-
+        # file= open("ToDoList/tasks.txt", 'a+')
+        # file.writelines(task)
+        # file.close()
+        
+        #-------------------Another way to work with files--------------------
+        #-------------------Here we do not need to write the file.close() method as 
+        
+        with open("ToDoList/tasks.txt", 'a+') as file:
+            file.writelines(task)
+            
     elif command == "show":
 
         tasks= open("ToDoList/tasks.txt", 'r').readlines()
         for index, t in enumerate(tasks):
             print(f"{index+1}-{t}", end='')
+
         
     elif command == "edit":
 
@@ -26,7 +33,8 @@ while True:
 
         tno = int(input("Enter the Task number to edit: "))
         newTask= input("Enter the new task: ")
-        tasks[tno-1]= newTask.strip().title()     
+        tasks[tno-1]= newTask.strip().title()
+        
 
     elif command == "exit":
         break
